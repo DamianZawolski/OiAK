@@ -2,6 +2,7 @@
 Projekt z architektury i organizacji komputerów
 
 Streszczenie artykułu:
+
 1.Wprowadzenie:
 Idea Systemu Liczb Resztkowych (RNS) sięga starożytnej chińskiej metody konwersji reszt na liczby, a później została formalizowana przez C.F. Gaussa w XIX wieku. Od czasu pojawienia się komputerów cyfrowych, opublikowano wiele artykułów proponujących efektywne algorytmy implementacji RNS na komputerach.
 
@@ -10,6 +11,7 @@ Główną zaletą RNS jest szybkość i niezawodność obliczeń arytmetycznych 
 Obecnie implementacje RNS można znaleźć w systemach przeciwlotniczych [4], obliczeniach neuronowych [1], przetwarzaniu sygnałów czasu rzeczywistego (rozpoznawanie wzorców) [5] i kryptografii [6]. Arytmetyka modularna (MA) jest skuteczna przy przetwarzaniu dużych strumieni danych (o wielkości kilkuset lub kilku tysięcy bitów) [7]. Dlatego RNS pozwala znacznie zwiększyć wydajność sprzętu oraz poprawić niezawodność i odporność na zakłócenia w przetwarzaniu sygnałów i transferze danych. W 2005 roku odbyła się konferencja w Rosji z okazji 50. rocznicy wprowadzenia RNS w obliczeniach naukowych [22], na której omówiono kluczową rolę RNS w radarach, transferze danych w samolotach kosmicznych i wojskowych (np. Sukhoi) oraz w innych ważnych technologiach.
 
 W niniejszym artykule przedstawiono efektywne sprzętowe obliczenia kombinacyjne mnożenia modularnego oraz funkcji modulo (X(mod P)) dla dowolnego modułu. Przedstawiono również wyniki eksperymentów i porównano je z narzędziami przemysłowymi.
+
 2.Podstawowa wiedza na temat RNS:
 
 Twierdzenie chińskiego twierdzenia o reszcie [23] stwierdza, że istnieje jednoznaczna odpowiedniość między zbiorem reszt X1, X2, ..., Xn a liczbami od 0 do p1 · p2 · ... · pn −1 = P −1. Ponieważ wartość reprezentowanej liczby jest niezmienna przy dowolnej permutacji reszt, RNS jest systemem liczbowym bez pozycji. Te cechy sprawiają, że RNS jest alternatywnym systemem z własnymi zaletami i wadami w porównaniu z innymi systemami reprezentacji. Z jednej strony pozwala na równoległe obliczenia i tym samym przyspiesza je, z drugiej strony nie pozwala na porównanie dwóch liczb reprezentowanych przez ich reszty i ustalenie, która jest większa bez dodatkowych operacji, takich jak konwersja wsteczna do systemu pozycyjnego.
