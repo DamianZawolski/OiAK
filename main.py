@@ -1,58 +1,19 @@
-from math import log2, ceil
-from binary_operations import *
+from binary_operations import modulo_computation, modulo_multiplication
+from test import measure_modulo_operation_time, measure_modulo_multiply_operation_time
+X = 57
+N = 18
+P = 47
+R = modulo_computation(X, N, P)
+print("Wynik dzialania modulo:", R)
 
-def main():
-    x = 51
-    p = 1000
-    r = 4
-    k = 3
-    S= modulus_function_computation(x, p, r, k)
-    print(S)
+A = 45
+B = 2
+mulN=6
+DELTA=2
+mulP=47
+out_vec = modulo_multiplication(A, B, mulN, DELTA, mulP)
+print("Wynik mnożenia modulo:", out_vec)
 
-
-def modulus_function_computation(x, p, r, k):
-    # zmiana liczby dziesietnej na wektor binarny
-    x = int_to_binary(x)
-    n = len(x)+1
-    # r = log2 P
-    r = ceil(log2(p))
-    k = ceil(n / r)
-
-    if len(x) < k * r:
-        x= add_zeros_to_binary_list(x, k*r-n)
-    X = []
-    
-    for i in range(k):
-        Xi = int(''.join(map(str, X[i-1])), 2)
-        S += Xi * (2**(i * (r - 1)))
-        X.append(Xi)
-
-    Stemp = S
-
-    while Stemp > 2 * p:
-        ntemp = len(Stemp)
-        ktemp = ceil(ntemp / r)
-
-        if len(Stemp) < ktemp * r:
-            Stemp= add_zeros_to_binary_list(Stemp, ktemp * r - ntemp)
-
-        S_parts = []
-        for i in range(k):
-            start = i * r
-            end = start + r
-            S_parts.append(bin(Stemp)[2:][start:end])
-
-        Stemp = 0
-        for i in range(1, k + 1):
-            Si = int(S_parts[i-1], 2)
-            Stemp += Si * (2**(i * (r - 1)))
-
-    if p <= Stemp:
-        S = Stemp - p
-    else:
-        S = Stemp
-
-    return S
-
-
-main()
+amount_of_operations = 100000
+measure_modulo_operation_time([100, 1000, 10000, 100000], amount_of_operations)
+measure_modulo_multiply_operation_time([100, 1000, 10000, 100000], amount_of_operations)
